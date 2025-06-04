@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - PetCawss</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            width: 200px;
+            float: left;
+            background: #333;
+            height: 100vh;
+            color: white;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav li {
+            padding: 15px;
+            cursor: pointer;
+        }
+        nav li:hover {
+            background: #444;
+        }
+        main {
+            margin-left: 200px;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 8px 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>PetCawss Admin Dashboard</h1>
+</header>
+
+<nav>
+    <ul>
+        <li onclick="showPage('dashboard')">Dashboard</li>
+        <li onclick="showPage('products')">Kelola Produk</li>
+        <li onclick="showPage('users')">Kelola User</li>
+        <li onclick="showPage('transactions')">Transaksi</li>
+        <li onclick="logout()">Logout</li>
+    </ul>
+</nav>
+
+<main>
+    <div id="dashboard" class="card">
+        <h2>Dashboard</h2>
+        <p>Total Produk: 20</p>
+        <p>Total Transaksi: 35</p>
+        <p>Total User: 15</p>
+    </div>
+
+    <div id="products" class="card hidden">
+        <h2>Kelola Produk</h2>
+        <table>
+            <tr><th>Nama Produk</th><th>Harga</th><th>Aksi</th></tr>
+            <tr><td>Me-O Tuna</td><td>Rp 40.000</td><td><button>Edit</button> <button>Hapus</button></td></tr>
+            <tr><td>Royal Canin Kitten</td><td>Rp 78.000</td><td><button>Edit</button> <button>Hapus</button></td></tr>
+        </table>
+        <button onclick="alert('Tambah Produk')">+ Tambah Produk</button>
+    </div>
+
+    <div id="users" class="card hidden">
+        <h2>Kelola User</h2>
+        <table>
+            <tr><th>Nama User</th><th>Email</th><th>Aksi</th></tr>
+            <tr><td>Rizky</td><td>rizky@mail.com</td><td><button>Hapus</button></td></tr>
+            <tr><td>Lia</td><td>lia@mail.com</td><td><button>Hapus</button></td></tr>
+        </table>
+    </div>
+
+    <div id="transactions" class="card hidden">
+        <h2>Data Transaksi</h2>
+        <table>
+            <tr><th>ID</th><th>Pelanggan</th><th>Produk</th><th>Status</th></tr>
+            <tr><td>TRX001</td><td>Rizky</td><td>Me-O Tuna</td><td>Selesai</td></tr>
+            <tr><td>TRX002</td><td>Lia</td><td>Royal Canin Kitten</td><td>Proses</td></tr>
+        </table>
+    </div>
+</main>
+
+<script>
+    function showPage(pageId) {
+        const pages = ['dashboard', 'products', 'users', 'transactions'];
+        pages.forEach(page => {
+            document.getElementById(page).classList.add('hidden');
+        });
+        document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    function logout() {
+        if (confirm("Yakin mau logout?")) {
+            alert("Berhasil logout!");
+            window.location.href = "index.html"; // arahkan ke halaman login
+        }
+    }
+</script>
+
+</body>
+</html>
